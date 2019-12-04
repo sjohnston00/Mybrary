@@ -1,0 +1,12 @@
+
+------- Pushing saves to git -----------------
+git add . (. stands for ALL)
+git commit -m "Name of save"
+git push (will just push the saved git save to the github repo)
+git push heroku master (will deply the save to the heroku server)
+
+
+--------Other commmands -------------------
+git config (to set the username and password for github)
+git init (initialize git)
+git status (to look at the files that you have changed)
