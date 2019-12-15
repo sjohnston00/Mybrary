@@ -13,10 +13,10 @@ router.get('/', async(req, res) => {
         const authors = await Author.find(searchOptions)
         res.render('authors/index', {
             authors:authors,
-        searchOptions:req.query})
+            searchOptions:req.query
+        })
     } catch (error) {
         res.redirect('/')
-        
     }
 })
 
@@ -24,7 +24,6 @@ router.get('/', async(req, res) => {
 router.get('/new', (req, res) => {
     res.render('authors/new', { Author: new Author() })
 })
-
 
 //Create author Route
 router.post('/', async (req,res) =>{
@@ -42,5 +41,4 @@ router.post('/', async (req,res) =>{
     })
  }
 })
-
 module.exports = router

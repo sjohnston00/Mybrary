@@ -10,11 +10,11 @@ const bookSchema = new mongoose.Schema({
     description:{
         type:String,
     },
-    publishdate:{
+    publishDate:{
         type:Date,
         required:true
     },
-    pageNumber:{
+    pageCount:{
         type:Number,
         required:true
     },

@@ -46,7 +46,7 @@ router.get('/new', async(req, res) => {
 
 
 //Create Book Route
-router.post('/', upload.single('cover') ,async (req,res) =>{
+router.post('/', upload.single('cover'), async (req,res) => {
     const fileName = req.file != null ? req.file.filename : null
     const book = new Book({
         title: req.body.title,
@@ -59,17 +59,20 @@ router.post('/', upload.single('cover') ,async (req,res) =>{
 
     try {
         const newBook = await book.save()
-        res.redirect(`books/${newBook.id}`)
+        
+        //res.redirect(`books/${newBook.id}`)
         res.redirect(`books`)
-    } catch (error) {
+    } catch (error){
+        console.log(error)
         if (book.coverImageName !=null) {
         removeBookCover(book.coverImageName)
         }
+        
         renderNewPage(res, book, true)
     }
  })
 function removeBookCover(fileName){
-    fs.unlink(path.join(uploadPath, fileName), err=>{
+    fs.unlink(path.join(uploadPath, fileName), err => {
         if (err) {
             console.log(err)
         }
@@ -79,19 +82,18 @@ async function renderNewPage(res, book, hasError = false) {
     try {
         const authors = await Author.find({})
         const params = {
-            author: authors,
-            book: Book
-        }
-        if (hasError) params.errorMessagge = 'Error Creating Book'
-
-        const book  = new Book()
-        res.render('books/new', {
             authors: authors,
             book: book
-        })
-    } catch (error) {
-        console.log(error)
-        res.redirect('/books')
+        }
+        if (hasError) {
+            params.errorMessagge = 'Error Creating Book'
+        }
+        
+        res.render('books/new', params)
+        }
+         catch (error) {
+            console.log(params.errorMessagge)
+        res.redirect('/')
     }
 }
 
