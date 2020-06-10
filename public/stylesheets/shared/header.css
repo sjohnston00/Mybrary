@@ -32,7 +32,10 @@
     color: var(--color-text-light);
     font-weight: var(--nav-link-font-weight);
     padding: 1rem;
+    transition: 0.5s ease;
 }
 .header-nav li a:hover, .header-title:hover{
     color: white;
+    border-bottom: 0.5px solid white;
+    
 }
