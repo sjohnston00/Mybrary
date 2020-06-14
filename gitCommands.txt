@@ -1,7 +1,7 @@
 
 ------- Pushing saves to git -----------------
 git add . (. stands for ALL)
-git commit -m "Name of save"
+git commit -m "Name of save" (-m for master branch)
 git push (will just push the saved git save to the github repo)
 git push heroku master (will deploy the save to the heroku server)
 
